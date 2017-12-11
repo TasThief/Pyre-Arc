@@ -1,11 +1,11 @@
 #pragma once
-#include "Component.hpp"
+#include "Servo.hpp"
 
 namespace Engine {
-	class Instance : Component
+	class Instance : Servo
 	{
 	public:
-		inline Instance(Foundation& f) : Component(f)
+		inline Instance(Foundation& f) : Servo(f)
 		{
 			vector<const char*> extensions;
 			extensions.push_back(VK_KHR_SURFACE_EXTENSION_NAME);
@@ -32,7 +32,7 @@ namespace Engine {
 				.setPpEnabledLayerNames(layers.data());
 
 			try {
-				_instance = vk::Instance(vk::createInstance(instInfo));
+				foundation.instance = vk::Instance(vk::createInstance(instInfo));
 				COUT("Instance created")
 			}
 			catch (const std::exception& e) {
@@ -43,7 +43,7 @@ namespace Engine {
 		}
 		inline virtual ~Instance()
 		{
-			_instance.destroy();
+			foundation.instance.destroy();
 			COUT("Instance destroyed")
 		}
 	};

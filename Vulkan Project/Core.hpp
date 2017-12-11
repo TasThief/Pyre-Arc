@@ -5,6 +5,7 @@
 #include "Surface.hpp"
 
 namespace Engine {
+
 	class Core
 	{
 	public:
@@ -12,6 +13,7 @@ namespace Engine {
 		Instance instance = Instance(foundation);
 		Window window = Window(foundation);
 		Surface surface = Surface(foundation);
+		//...
 
 		inline void Run()
 		{

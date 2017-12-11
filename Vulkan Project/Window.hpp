@@ -1,13 +1,13 @@
 #pragma once
-#include "Component.hpp"
+#include "Servo.hpp"
 #define WIDTH 1280
 #define HEIGHT 720
 
 namespace Engine {
-	class Window : Component
+	class Window : Servo
 	{
 	public:
-		inline Window(Foundation& f) : Component(f)
+		inline Window(Foundation& f) : Servo(f)
 		{
 			if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 				COUT("Could not initialize SDL.")

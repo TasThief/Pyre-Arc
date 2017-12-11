@@ -157,7 +157,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Servo.hpp" />
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="Foundation.hpp" />
     <ClInclude Include="Instance.hpp" />

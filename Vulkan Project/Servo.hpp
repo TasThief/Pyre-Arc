@@ -12,8 +12,12 @@ using namespace std;
 #endif
 
 namespace Engine {
-	class Component
+	//Servos provides a RAII wrap for the building and destroying processes of a given vulkan element,
+	//these objects are kept in the foundation, this master class also provides an reference to it
+	
+	class Servo
 	{
+
 	//Shorthand for the vkInstance held within foundation
 	#define _instance foundation.instance
 
@@ -24,8 +28,11 @@ namespace Engine {
 	#define _surface foundation.surface
 
 	public:
+		//The foundation reference
 		Foundation & foundation;
-		inline Component(Foundation & f) : foundation(f) {}
+
+		//Base Ctor only initialized the foundation reference
+		inline Servo(Foundation & f) : foundation(f) {}
 	};
 
 }

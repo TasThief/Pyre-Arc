@@ -1,10 +1,10 @@
 #pragma once
-#include "Component.hpp"
+#include "Servo.hpp"
 namespace Engine {
-	class Surface : Component
+	class Surface : Servo
 	{
 	public:
-		inline Surface(Foundation& f) : Component(f)
+		inline Surface(Foundation& f) : Servo(f)
 		{
 			try {
 				SDL_SysWMinfo windowInfo;
