@@ -2,11 +2,13 @@
 #include "Foundation.hpp"
 #include <vector>
 #include <iostream>
-
+#include <algorithm>
+#include <numeric>
+#include <string.h>
 using namespace std;
 
 #ifdef _DEBUG
-#define COUT(message) cout<<#message<<endl;
+#define COUT(message) cout<<message<<endl;
 #else
 #define COUT(message)
 #endif
