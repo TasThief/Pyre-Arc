@@ -12,7 +12,7 @@ namespace Engine {
 			if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 				COUT("Could not initialize SDL.")
 			}
-			_window = SDL_CreateWindow("Thiago Vulkan Project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
+			_window = SDL_CreateWindow("Pyre Arc", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
 			if (_window == NULL) {
 				COUT("Could not create SDL window.")
 			}

@@ -17,9 +17,9 @@ namespace Engine {
 #endif
 
 			vk::ApplicationInfo appInfo = vk::ApplicationInfo()
-				.setPApplicationName("Vulkan Test")
+				.setPApplicationName("Test Build")
 				.setApplicationVersion(1)
-				.setPEngineName("Engine Test")
+				.setPEngineName("Pyre Arc")
 				.setEngineVersion(1)
 				.setApiVersion(VK_API_VERSION_1_0);
 
