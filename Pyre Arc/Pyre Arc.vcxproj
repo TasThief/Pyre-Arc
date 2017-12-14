@@ -159,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicalDevice.hpp" />
-    <ClInclude Include="Requirement.hpp" />
+    <ClInclude Include="Requirements.hpp" />
     <ClInclude Include="Servo.hpp" />
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="Foundation.hpp" />

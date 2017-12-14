@@ -16,6 +16,9 @@
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{9d3a0479-4c8a-4eb3-aa31-fa1e044608c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Tools">
+      <UniqueIdentifier>{02dac48d-8a01-4e34-943c-56e19ca6a93c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -44,7 +47,7 @@
     <ClInclude Include="PhysicalDevice.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Requirement.hpp">
+    <ClInclude Include="Requirements.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

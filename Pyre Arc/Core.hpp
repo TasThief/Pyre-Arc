@@ -3,21 +3,21 @@
 #include "Window.hpp"
 #include "Surface.hpp"
 #include "PhysicalDevice.hpp"
-
+#define RESOURCES foundation, requirements
 namespace Engine {
 
 	class Core
 	{
 	public:
-		//Foundation cointaining all vkObjects
+		//Resources each servo will get a reference to those so they can work with
 		Foundation foundation;
+		Requirements requirements;
 
-		///Servos declarations
-		Engine::Instance instance = Engine::Instance(foundation);
-		Window window = Window(foundation);
-		Engine::PhysicalDevice physicalDevice = Engine::PhysicalDevice(foundation);
-		Surface surface = Surface(foundation);
-		//...
+		///Servo declarations
+		Instance instance = Instance(RESOURCES);
+		Window window = Window(RESOURCES);
+		PhysicalDevice physicalDevice = PhysicalDevice(RESOURCES);
+		Surface surface = Surface(RESOURCES);
 
 		inline void Run()
 		{
@@ -44,3 +44,7 @@ namespace Engine {
 		};
 	};
 }
+
+
+
+

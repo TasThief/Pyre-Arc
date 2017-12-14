@@ -23,9 +23,9 @@ namespace Engine {
 	public:
 		//The foundation reference
 		Foundation & foundation;
-
+		Requirements & requirements;
 		//Base Ctor only initialized the foundation reference
-		inline Servo(Foundation & f) : foundation(f) {}
+		inline Servo(Foundation & f, Requirements& r) : foundation(f), requirements(r) {}
 	};
 
 }

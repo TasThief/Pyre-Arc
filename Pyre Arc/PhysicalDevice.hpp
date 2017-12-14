@@ -2,16 +2,17 @@
 #include "Servo.hpp"
 
 namespace Engine {
-
+	/*
 	struct FamilyIndex {
 		int index = -1;
 		vk::QueueFamilyProperties info;
 
-		bool validate(const vector<float>& request) {
+		inline bool validate(const vector<float>& request) {
 			return (info.queueCount > request.size() && index != -1);
 		};
-		void test() {
-			
+	
+		inline void test() {
+
 		};
 	};
 	struct PhysicalDeviceInfo {
@@ -24,19 +25,17 @@ namespace Engine {
 			qfp = device.getQueueFamilyProperties();
 			
 		};
-	};
+	};*/
 	class PhysicalDevice : Servo
 	{
 	public:
-		inline PhysicalDevice(Foundation& f) : Servo(f) {
-			vector<PhysicalDeviceInfo> infoList;
+		inline PhysicalDevice(Foundation & f, Requirements& r) : Servo(f, r) {
+		/*	vector<PhysicalDeviceInfo> infoList;
 			for (const auto& device : _instance.enumeratePhysicalDevices())
 				infoList.push_back(PhysicalDeviceInfo(device));
-
+				*/
 		};
-		inline void RateDevice() {
 
-		};
 		inline ~PhysicalDevice() {
 			
 		};

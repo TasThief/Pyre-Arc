@@ -1,6 +1,6 @@
 #pragma once
 #include "Servo.hpp"
-#include <memory>
+
 namespace Engine {
 	//This servo construct and deconstruct the vkInstance object, it checks if all required extensions are avaliable and triggers the validation layers aswell
 	class Instance : Servo
@@ -11,7 +11,7 @@ namespace Engine {
 		inline void ValidateExtensions() {
 			vector<string> missingExtensions = {};
 			vector<vk::ExtensionProperties> iExtensions = vk::enumerateInstanceExtensionProperties();
-			for (const auto& extensionName : Requirement::instanceExtensionsNames)
+			for (const auto& extensionName : requirements.instanceExtensions)
 				if (find_if(iExtensions.begin(), iExtensions.end(), [&extensionName](vk::ExtensionProperties prop) { return strcmp(prop.extensionName, extensionName); }) == iExtensions.end())
 					missingExtensions.push_back(extensionName);
 
@@ -26,7 +26,7 @@ namespace Engine {
 
 	public:
 
-		inline Instance(Foundation& f) : Servo(f)
+		inline Instance(Foundation & f, Requirements& r) : Servo(f, r)
 		{
 			//check if system has required extensions
 			ValidateExtensions();
@@ -34,16 +34,16 @@ namespace Engine {
 			vk::ApplicationInfo appInfo = vk::ApplicationInfo()
 				.setPApplicationName("Pyre Arc")
 				.setApplicationVersion(1)
-				.setApiVersion(VK_API_VERSION_1_0);
+				.setApiVersion(requirements.minimalApiVersion);
 
 			//fill the instance creation form using requested layers, extensions and application info
 			vk::InstanceCreateInfo instInfo = vk::InstanceCreateInfo()
 				.setFlags(vk::InstanceCreateFlags())
 				.setPApplicationInfo(&appInfo)
-				.setEnabledExtensionCount(static_cast<uint32_t>(Requirement::instanceExtensionsNames.size()))
-				.setPpEnabledExtensionNames(Requirement::instanceExtensionsNames.data())
-				.setEnabledLayerCount(static_cast<uint32_t>(Requirement::layersNames.size()))
-				.setPpEnabledLayerNames(Requirement::layersNames.data());
+				.setEnabledExtensionCount(static_cast<uint32_t>(requirements.instanceExtensions.size()))
+				.setPpEnabledExtensionNames(requirements.instanceExtensions.data())
+				.setEnabledLayerCount(static_cast<uint32_t>(requirements.layers.size()))
+				.setPpEnabledLayerNames(requirements.layers.data());
 
 			try {
 				//try to build the instance

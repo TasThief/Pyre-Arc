@@ -4,13 +4,13 @@ namespace Engine {
 	class Surface : Servo
 	{
 	public:
-		inline Surface(Foundation& f) : Servo(f)
+		inline Surface(Foundation & f, Requirements& r) : Servo(f, r)
 		{
 			try {
 				SDL_SysWMinfo windowInfo;
 				SDL_VERSION(&windowInfo.version);
 				if (!SDL_GetWindowWMInfo(_window, &windowInfo)) {
-					throw std::system_error(std::error_code(), "[ERROR] SDK window manager info is not available.");
+					throw std::system_error(std::error_code(), "[ERROR] Surface - SDK window manager info is not available.");
 				}
 
 				if (windowInfo.subsystem == SDL_SYSWM_WINDOWS) {
@@ -22,11 +22,12 @@ namespace Engine {
 
 				}
 				else
-					throw std::system_error(std::error_code(), "[ERROR] Unsupported window manager is in use.");
+					throw std::system_error(std::error_code(), "[ERROR] Surface - Unsupported window manager is in use.");
 			}
 			catch (const std::exception& e) {
-				COUT("[ERROR] Failed to create Vulkan surface");
-				cout << e.what() << endl;
+				string m = "[ERROR] Surface - ";
+				m += +e.what();
+				COUT(m)
 			}
 		};
 		inline virtual~Surface()
@@ -35,5 +36,4 @@ namespace Engine {
 			COUT("[UNDONE] Surface")
 		};
 	};
-
 }
