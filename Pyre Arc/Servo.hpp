@@ -1,17 +1,5 @@
 #pragma once
 #include "Foundation.hpp"
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include <numeric>
-#include <string.h>
-using namespace std;
-
-#ifdef _DEBUG
-#define COUT(message) cout<<message<<endl;
-#else
-#define COUT(message)
-#endif
 
 namespace Engine {
 	//Servos provides a RAII wrap for the building and destroying processes of a given vulkan element,
@@ -28,6 +16,9 @@ namespace Engine {
 
 	//Shorthand for the vkSurfaceKHR held within foundation
 	#define _surface foundation.surface
+
+	//Shorthand for the vkDevice held within foundation
+	#define _physicalDevice foundation.physicalDevice
 
 	public:
 		//The foundation reference

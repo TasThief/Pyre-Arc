@@ -41,5 +41,14 @@
     <ClInclude Include="Servo.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicalDevice.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Requirement.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EngineDiagram.cd" />
   </ItemGroup>
 </Project>

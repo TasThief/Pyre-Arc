@@ -1,17 +1,21 @@
 #pragma once
-#include "Foundation.hpp"
 #include "Instance.hpp"
 #include "Window.hpp"
 #include "Surface.hpp"
+#include "PhysicalDevice.hpp"
 
 namespace Engine {
 
 	class Core
 	{
 	public:
+		//Foundation cointaining all vkObjects
 		Foundation foundation;
-		Instance instance = Instance(foundation);
+
+		///Servos declarations
+		Engine::Instance instance = Engine::Instance(foundation);
 		Window window = Window(foundation);
+		Engine::PhysicalDevice physicalDevice = Engine::PhysicalDevice(foundation);
 		Surface surface = Surface(foundation);
 		//...
 

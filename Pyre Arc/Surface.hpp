@@ -10,7 +10,7 @@ namespace Engine {
 				SDL_SysWMinfo windowInfo;
 				SDL_VERSION(&windowInfo.version);
 				if (!SDL_GetWindowWMInfo(_window, &windowInfo)) {
-					throw std::system_error(std::error_code(), "SDK window manager info is not available.");
+					throw std::system_error(std::error_code(), "[ERROR] SDK window manager info is not available.");
 				}
 
 				if (windowInfo.subsystem == SDL_SYSWM_WINDOWS) {
@@ -18,21 +18,21 @@ namespace Engine {
 						.setHinstance(GetModuleHandle(NULL))
 						.setHwnd(windowInfo.info.win.window);
 					_surface = _instance.createWin32SurfaceKHR(surfaceInfo);
-					COUT("Surface created")
+					COUT("[DONE] Surface")
 
 				}
 				else
-					throw std::system_error(std::error_code(), "Unsupported window manager is in use.");
+					throw std::system_error(std::error_code(), "[ERROR] Unsupported window manager is in use.");
 			}
 			catch (const std::exception& e) {
-				COUT("Failed to create Vulkan surface");
+				COUT("[ERROR] Failed to create Vulkan surface");
 				cout << e.what() << endl;
 			}
 		};
 		inline virtual~Surface()
 		{
 			_instance.destroySurfaceKHR(_surface);
-			COUT("Surface destroyed")
+			COUT("[UNDONE] Surface")
 		};
 	};
 

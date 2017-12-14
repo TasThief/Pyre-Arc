@@ -10,7 +10,7 @@ int main()
 		core.Run();
 	} //scope out the core to call for its destruction before the _CrtDumpMemoryLeaks
 
-	_CrtDumpMemoryLeaks();
+
 	return 0;
 }
 
