@@ -10,7 +10,7 @@ namespace Engine {
 		vk::Instance instance;
 		vk::SurfaceKHR surface;
 		SDL_Window* window;
-		vk::Device physicalDevice;
+		vk::PhysicalDevice physicalDevice;
 		//...
 	};
 

@@ -3,7 +3,7 @@
 #include "Window.hpp"
 #include "Surface.hpp"
 #include "PhysicalDevice.hpp"
-#define RESOURCES foundation, requirements
+
 namespace Engine {
 
 	class Core
@@ -11,13 +11,12 @@ namespace Engine {
 	public:
 		//Resources each servo will get a reference to those so they can work with
 		Foundation foundation;
-		Requirements requirements;
 
 		///Servo declarations
-		Instance instance = Instance(RESOURCES);
-		Window window = Window(RESOURCES);
-		PhysicalDevice physicalDevice = PhysicalDevice(RESOURCES);
-		Surface surface = Surface(RESOURCES);
+		Engine::Instance instance = Instance(foundation);
+		Engine::Window window = Window(foundation);
+		Engine::PhysicalDevice physicalDevice = PhysicalDevice(foundation);
+		Engine::Surface surface = Surface(foundation);
 
 		inline void Run()
 		{

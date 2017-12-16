@@ -6,12 +6,13 @@ namespace Engine {
 	class Instance : Servo
 	{
 	private:
+		vk::Instance& instance;
 
 		//Check if all required extensions are present for this aplication, if not throw an error
-		inline void ValidateExtensions() {
+		inline void ValidateExtensions(const vector<char*>& extensions) {
 			vector<string> missingExtensions = {};
 			vector<vk::ExtensionProperties> iExtensions = vk::enumerateInstanceExtensionProperties();
-			for (const auto& extensionName : requirements.instanceExtensions)
+			for (const auto& extensionName : extensions)
 				if (find_if(iExtensions.begin(), iExtensions.end(), [&extensionName](vk::ExtensionProperties prop) { return strcmp(prop.extensionName, extensionName); }) == iExtensions.end())
 					missingExtensions.push_back(extensionName);
 
@@ -26,28 +27,40 @@ namespace Engine {
 
 	public:
 
-		inline Instance(Foundation & f, Requirements& r) : Servo(f, r)
+		inline Instance(Foundation & f) : Servo(f), instance(f.instance)
 		{
+			const vector<char*> layers = {
+			#if _DEBUG
+				"VK_LAYER_LUNARG_standard_validation"
+			#endif
+			};
+			const vector<char*> extensions = {
+				VK_KHR_SURFACE_EXTENSION_NAME,
+				VK_KHR_WIN32_SURFACE_EXTENSION_NAME
+			};
+
+
+
 			//check if system has required extensions
-			ValidateExtensions();
+			ValidateExtensions(extensions);
 			//build application info struct, it contains info about this application...
 			vk::ApplicationInfo appInfo = vk::ApplicationInfo()
 				.setPApplicationName("Pyre Arc")
 				.setApplicationVersion(1)
-				.setApiVersion(requirements.minimalApiVersion);
+				.setApiVersion(MINIMAL_API_VERSION);
 
 			//fill the instance creation form using requested layers, extensions and application info
 			vk::InstanceCreateInfo instInfo = vk::InstanceCreateInfo()
 				.setFlags(vk::InstanceCreateFlags())
 				.setPApplicationInfo(&appInfo)
-				.setEnabledExtensionCount(static_cast<uint32_t>(requirements.instanceExtensions.size()))
-				.setPpEnabledExtensionNames(requirements.instanceExtensions.data())
-				.setEnabledLayerCount(static_cast<uint32_t>(requirements.layers.size()))
-				.setPpEnabledLayerNames(requirements.layers.data());
+				.setEnabledExtensionCount(static_cast<uint32_t>(extensions.size()))
+				.setPpEnabledExtensionNames(extensions.data())
+				.setEnabledLayerCount(static_cast<uint32_t>(layers.size()))
+				.setPpEnabledLayerNames(layers.data());
 
 			try {
 				//try to build the instance
-				_instance = vk::Instance(vk::createInstance(instInfo));
+				instance = vk::Instance(vk::createInstance(instInfo));
 				COUT("[DONE] Instance")
 			}
 			catch (const std::exception& e) {
@@ -61,7 +74,7 @@ namespace Engine {
 		inline virtual ~Instance()
 		{
 			//destroy the vkInstance
-			foundation.instance.destroy();
+			instance.destroy();
 			COUT("[UNDONE] Instance")
 		}
 

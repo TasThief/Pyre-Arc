@@ -29,7 +29,7 @@ namespace Engine {
 	class PhysicalDevice : Servo
 	{
 	public:
-		inline PhysicalDevice(Foundation & f, Requirements& r) : Servo(f, r) {
+		inline PhysicalDevice(Foundation & f):Servo(f) {
 		/*	vector<PhysicalDeviceInfo> infoList;
 			for (const auto& device : _instance.enumeratePhysicalDevices())
 				infoList.push_back(PhysicalDeviceInfo(device));

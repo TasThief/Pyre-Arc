@@ -19,6 +19,9 @@
     <Filter Include="Header Files\Tools">
       <UniqueIdentifier>{02dac48d-8a01-4e34-943c-56e19ca6a93c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Structure">
+      <UniqueIdentifier>{bd429b95-0bf6-4079-8e3f-a25d4c4ff385}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -26,12 +29,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Foundation.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Surface.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -41,14 +38,23 @@
     <ClInclude Include="Window.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Servo.hpp">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="PhysicalDevice.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Servo.hpp">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.hpp">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="Foundation.hpp">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
     <ClInclude Include="Requirements.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverInspector.hpp">
+      <Filter>Header Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

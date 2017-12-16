@@ -16,32 +16,19 @@
 #include <memory>
 #include <functional>
 
-#define _CRTDBG_MAP_ALLOC  
-#include <stdlib.h>  
-#include <crtdbg.h>  
 
 using namespace std;
 #ifdef _DEBUG
 #define COUT(message) cout<<message<<endl;
+#define _CRTDBG_MAP_ALLOC  
+#include <stdlib.h>  
+#include <crtdbg.h>  
 #else
 #define COUT(message)
 #endif
 
-namespace Engine {
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+#define MINIMAL_API_VERSION VK_API_VERSION_1_0
 
-	struct Requirements {
-	public:
-		const vector<char*> layers = {
-			"VK_LAYER_LUNARG_standard_validation"
-		};
-		const vector<char*> instanceExtensions = {
-				VK_KHR_SURFACE_EXTENSION_NAME,
-				VK_KHR_WIN32_SURFACE_EXTENSION_NAME
-		};
-		const int width = 1280;
-		const int height = 720;
-		const uint32_t minimalApiVersion = VK_API_VERSION_1_0;
-			
-	};
 
-}

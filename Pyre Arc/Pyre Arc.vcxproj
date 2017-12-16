@@ -158,6 +158,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DriverInspector.hpp" />
     <ClInclude Include="PhysicalDevice.hpp" />
     <ClInclude Include="Requirements.hpp" />
     <ClInclude Include="Servo.hpp" />

@@ -5,14 +5,16 @@
 namespace Engine {
 	class Window : Servo
 	{
+	private:
+		SDL_Window * & window;
 	public:
-		inline Window(Foundation & f, Requirements& r) : Servo(f,r)
+		inline Window(Foundation & f) : Servo(f), window(f.window)
 		{
 			if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 				COUT("[ERROR] Could not initialize SDL.")
 			}
-			_window = SDL_CreateWindow("Pyre Arc", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, requirements.width, requirements.height, SDL_WINDOW_OPENGL);
-			if (_window == NULL) {
+			window = SDL_CreateWindow("Pyre Arc", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
+			if (window == NULL) {
 				COUT("[ERROR] Could not create SDL window.")
 			}
 			else {
@@ -21,7 +23,7 @@ namespace Engine {
 		}
 		inline virtual ~Window()
 		{
-			SDL_DestroyWindow(_window);
+			SDL_DestroyWindow(window);
 			SDL_Quit();
 			COUT("[UNDONE] Window")
 		}
