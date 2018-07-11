@@ -8,7 +8,7 @@ namespace Engine {
 	{
 	public:
 		//Base Ctor only initialized the foundation reference
-		inline Servo(Foundation & f){}
+		inline Servo(Foundation & f) {};
 	};
 
 }

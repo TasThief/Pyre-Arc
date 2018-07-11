@@ -2,7 +2,7 @@
 #include "Instance.hpp"
 #include "Window.hpp"
 #include "Surface.hpp"
-#include "PhysicalDevice.hpp"
+#include "Device.hpp"
 
 namespace Engine {
 
@@ -15,8 +15,8 @@ namespace Engine {
 		///Servo declarations
 		Engine::Instance instance = Instance(foundation);
 		Engine::Window window = Window(foundation);
-		Engine::PhysicalDevice physicalDevice = PhysicalDevice(foundation);
 		Engine::Surface surface = Surface(foundation);
+		Engine::Device device = Device(foundation);
 
 		inline void Run()
 		{
