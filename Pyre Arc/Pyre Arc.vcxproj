@@ -162,18 +162,16 @@
     <ClCompile Include="Instance.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QueueManager.cpp" />
+    <ClCompile Include="Servo.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeviceInspector.hpp" />
-    <ClInclude Include="Device.hpp" />
     <ClInclude Include="QueueManager.hpp" />
     <ClInclude Include="Requirements.hpp" />
     <ClInclude Include="Core.hpp" />
-    <ClInclude Include="Instance.hpp" />
-    <ClInclude Include="Surface.hpp" />
-    <ClInclude Include="Window.hpp" />
+    <ClInclude Include="Servo.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EngineDiagram.cd" />

@@ -1,6 +1,6 @@
-#include "Surface.hpp"
+#include "Servo.hpp"
 
-Servo::Surface::Surface(vk::Instance & instance, SDL_Window* & window) : surface(surface), instance(instance)
+Servo::Surface::Surface(vk::Instance & instance, SDL_Window* & window) : instance(instance)
 {
 	try {
 		SDL_SysWMinfo windowInfo;
@@ -13,7 +13,7 @@ Servo::Surface::Surface(vk::Instance & instance, SDL_Window* & window) : surface
 			vk::Win32SurfaceCreateInfoKHR surfaceInfo = vk::Win32SurfaceCreateInfoKHR()
 				.setHinstance(GetModuleHandle(NULL))
 				.setHwnd(windowInfo.info.win.window);
-			surface = instance.createWin32SurfaceKHR(surfaceInfo);
+			resource = instance.createWin32SurfaceKHR(surfaceInfo);
 			COUT("[DONE] Surface")
 
 		}
@@ -27,12 +27,8 @@ Servo::Surface::Surface(vk::Instance & instance, SDL_Window* & window) : surface
 	}
 };
 
-Servo::Surface::operator vk::SurfaceKHR &() {
-	return surface;
-}
-
 Servo::Surface::~Surface()
 {
-	instance.destroySurfaceKHR(surface);
+	instance.destroySurfaceKHR(resource);
 	COUT("[UNDONE] Surface")
 };

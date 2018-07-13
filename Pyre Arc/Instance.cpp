@@ -1,4 +1,4 @@
-#include "Instance.hpp"
+#include "Servo.hpp"
 
 //Check if all required extensions are present for this aplication, if not throw an error
 void Servo::Instance::ValidateExtensions(const vector<char*>& extensions) {
@@ -16,11 +16,12 @@ void Servo::Instance::ValidateExtensions(const vector<char*>& extensions) {
 		throw vk::ExtensionNotPresentError(errorMessage);
 	}
 };
-	
+
+/*
 Servo::Instance::operator vk::Instance&() {
 	return instance;
 };
-
+*/
 Servo::Instance::Instance() //: instance(instance)
 {
 	const vector<char*> layers = {
@@ -53,7 +54,7 @@ Servo::Instance::Instance() //: instance(instance)
 
 	try {
 		//try to build the instance
-		instance = vk::Instance(vk::createInstance(instInfo));
+		resource = vk::Instance(vk::createInstance(instInfo));
 		COUT("[DONE] Instance")
 	}
 	catch (const std::exception& e) {
@@ -67,6 +68,6 @@ Servo::Instance::Instance() //: instance(instance)
 Servo::Instance::~Instance()
 {
 	//destroy the vkInstance
-	instance.destroy();
+	resource.destroy();
 	COUT("[UNDONE] Instance")
 };

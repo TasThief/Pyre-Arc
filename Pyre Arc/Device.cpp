@@ -1,4 +1,4 @@
-#include "Device.hpp"
+#include "Servo.hpp"
 
 vk::PhysicalDevice Servo::Device::PickPhysicalDevice(const vk::Instance& instance, const vk::SurfaceKHR& surface, const PhysicalDeviceRequestIndexes& requestedFeatures) {
 	// Use an ordered map to automatically sort candidates by increasing score
@@ -15,10 +15,6 @@ vk::PhysicalDevice Servo::Device::PickPhysicalDevice(const vk::Instance& instanc
 		throw std::runtime_error("[ERROR] Failed to find a suitable GPU!");
 };
 
-Servo::Device::operator vk::Device &() {
-	return device;
-};
-
 Servo::Device::Device(vk::Instance & instance, vk::SurfaceKHR & surface, QueueManager & queue) {
 	PhysicalDeviceRequestIndexes requestedFeatureIndexes = vk::PhysicalDeviceFeatures()
 		.setGeometryShader(VK_TRUE)
@@ -27,7 +23,7 @@ Servo::Device::Device(vk::Instance & instance, vk::SurfaceKHR & surface, QueueMa
 	vk::PhysicalDevice physicalDevice = PickPhysicalDevice(instance, surface, requestedFeatureIndexes);
 
 	vector<vk::DeviceQueueCreateInfo> queueInfoList;
-	queue.GetQueueCreationInfoList(physicalDevice, device, queueInfoList);
+	queue.GetQueueCreationInfoList(physicalDevice, resource, queueInfoList);
 
 	/*		vk::DeviceCreateInfo deviceInfo = vk::DeviceCreateInfo()
 	.setPQueueCreateInfos(queueInfoList.data())
@@ -38,13 +34,13 @@ Servo::Device::Device(vk::Instance & instance, vk::SurfaceKHR & surface, QueueMa
 
 	device = physicalDevice.createDevice(deviceInfo);
 	*/
-	queue.InitializeHandlers(physicalDevice, device);
+	queue.InitializeHandlers(physicalDevice, resource);
 
 	COUT("[DONE] Device")
 };
 
 Servo::Device::~Device() {
-	device.destroy();
+	resource.destroy();
 	COUT("[UNDONE] Device")
 };
 	
