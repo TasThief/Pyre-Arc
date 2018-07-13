@@ -16,15 +16,15 @@ vk::PhysicalDevice Engine::Device::PickPhysicalDevice(const vk::Instance& instan
 };
 
 
-Engine::Device::Device(Foundation & f) :Servo(f), device(f.device) {
+Engine::Device::Device(vk::Device & device, vk::Instance & instance, vk::SurfaceKHR & surface, QueueManager & queue) : device(device) {
 	PhysicalDeviceRequestIndexes requestedFeatureIndexes = vk::PhysicalDeviceFeatures()
 		.setGeometryShader(VK_TRUE)
 		.setDepthClamp(VK_TRUE);
 
-	vk::PhysicalDevice physicalDevice = PickPhysicalDevice(f.instance, f.surface, requestedFeatureIndexes);
+	vk::PhysicalDevice physicalDevice = PickPhysicalDevice(instance, surface, requestedFeatureIndexes);
 
 	vector<vk::DeviceQueueCreateInfo> queueInfoList;
-	f.queue.GetQueueCreationInfoList(physicalDevice, device, queueInfoList);
+	queue.GetQueueCreationInfoList(physicalDevice, device, queueInfoList);
 
 	/*		vk::DeviceCreateInfo deviceInfo = vk::DeviceCreateInfo()
 	.setPQueueCreateInfos(queueInfoList.data())
@@ -35,7 +35,7 @@ Engine::Device::Device(Foundation & f) :Servo(f), device(f.device) {
 
 	device = physicalDevice.createDevice(deviceInfo);
 	*/
-	f.queue.InitializeHandlers(physicalDevice, device);
+	queue.InitializeHandlers(physicalDevice, device);
 
 	COUT("[DONE] Device")
 };

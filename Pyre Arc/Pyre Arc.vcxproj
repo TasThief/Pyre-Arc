@@ -159,12 +159,9 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DeviceInspector.cpp" />
-    <ClCompile Include="Foundation.cpp" />
     <ClCompile Include="Instance.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QueueManager.cpp" />
-    <ClCompile Include="Requirements.cpp" />
-    <ClCompile Include="Servo.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -173,9 +170,7 @@
     <ClInclude Include="Device.hpp" />
     <ClInclude Include="QueueManager.hpp" />
     <ClInclude Include="Requirements.hpp" />
-    <ClInclude Include="Servo.hpp" />
     <ClInclude Include="Core.hpp" />
-    <ClInclude Include="Foundation.hpp" />
     <ClInclude Include="Instance.hpp" />
     <ClInclude Include="Surface.hpp" />
     <ClInclude Include="Window.hpp" />

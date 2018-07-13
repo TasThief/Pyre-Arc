@@ -51,15 +51,6 @@
     <ClCompile Include="Core.cpp">
       <Filter>Source Files\Structure</Filter>
     </ClCompile>
-    <ClCompile Include="Foundation.cpp">
-      <Filter>Source Files\Structure</Filter>
-    </ClCompile>
-    <ClCompile Include="Requirements.cpp">
-      <Filter>Source Files\Structure</Filter>
-    </ClCompile>
-    <ClCompile Include="Servo.cpp">
-      <Filter>Source Files\Structure</Filter>
-    </ClCompile>
     <ClCompile Include="DeviceInspector.cpp">
       <Filter>Source Files\Tools</Filter>
     </ClCompile>
@@ -77,13 +68,7 @@
     <ClInclude Include="Window.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Servo.hpp">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
     <ClInclude Include="Core.hpp">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
-    <ClInclude Include="Foundation.hpp">
       <Filter>Header Files\Structure</Filter>
     </ClInclude>
     <ClInclude Include="Requirements.hpp">

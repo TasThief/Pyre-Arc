@@ -10,37 +10,20 @@ namespace Engine {
 	{
 	public:
 		//Resources each servo will get a reference to those so they can work with
-		Foundation foundation;
+		QueueManager queue;
+
+		vk::Instance vkInstance;
+		vk::SurfaceKHR vkSurface;
+		SDL_Window* sdlWindow;
+		vk::Device vkDevice;
 
 		///Servo declarations
-		Engine::Instance instance = Instance(foundation);
-		Engine::Window window = Window(foundation);
-		Engine::Surface surface = Surface(foundation);
-		Engine::Device device = Device(foundation);
+		Engine::Instance instance = Instance(vkInstance);
+		Engine::Window window = Window(sdlWindow);
+		Engine::Surface surface = Surface(vkSurface, vkInstance, sdlWindow);
+		Engine::Device device = Device(vkDevice, vkInstance, vkSurface, queue);
 
-		inline void Run()
-		{
-			bool stillRunning = true;
-			while (stillRunning) {
-
-				SDL_Event event;
-				while (SDL_PollEvent(&event)) {
-
-					switch (event.type) {
-
-					case SDL_QUIT:
-						stillRunning = false;
-						break;
-
-					default:
-						// Do nothing.
-						break;
-					}
-				}
-
-				SDL_Delay(10);
-			}
-		};
+		void Run();
 	};
 }
 

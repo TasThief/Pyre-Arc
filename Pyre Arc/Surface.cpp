@@ -1,11 +1,11 @@
 #include "Surface.hpp"
 
-Engine::Surface::Surface(Foundation & f) : Servo(f), surface(f.surface), instance(f.instance)
+Engine::Surface::Surface(vk::SurfaceKHR & surface, vk::Instance & instance, SDL_Window* & window) : surface(surface), instance(instance)
 {
 	try {
 		SDL_SysWMinfo windowInfo;
 		SDL_VERSION(&windowInfo.version);
-		if (!SDL_GetWindowWMInfo(f.window, &windowInfo)) {
+		if (!SDL_GetWindowWMInfo(window, &windowInfo)) {
 			throw std::system_error(std::error_code(), "[ERROR] Surface - SDK window manager info is not available.");
 		}
 

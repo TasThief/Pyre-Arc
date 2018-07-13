@@ -1,5 +1,5 @@
 #pragma once
-#include "Foundation.hpp"
+
 
 namespace Engine {
 	//Servos provides a RAII wrap for the building and destroying processes of a given vulkan element,
@@ -8,7 +8,7 @@ namespace Engine {
 	{
 	public:
 		//Base Ctor only initialized the foundation reference
-		inline Servo(Foundation & f) {};
+		inline Servo(Foundation & f);
 	};
 
 }

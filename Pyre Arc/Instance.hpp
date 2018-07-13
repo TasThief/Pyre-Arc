@@ -1,9 +1,9 @@
 #pragma once
-#include "Servo.hpp"
+#include "Foundation.hpp" 
 
 namespace Engine {
 	//This servo construct and deconstruct the vkInstance object, it checks if all required extensions are avaliable and triggers the validation layers aswell
-	class Instance : Servo
+	class Instance
 	{
 	private:
 		vk::Instance& instance;
@@ -12,7 +12,7 @@ namespace Engine {
 		void ValidateExtensions(const vector<char*>& extensions);
 
 	public:
-		Instance(Foundation & f);
+		Instance(vk::Instance & instance);
 
 		virtual ~Instance();
 	};

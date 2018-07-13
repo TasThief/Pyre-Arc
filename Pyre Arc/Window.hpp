@@ -1,13 +1,13 @@
 #pragma once
-#include "Servo.hpp"
+#include "Foundation.hpp" 
 
 namespace Engine {
-	class Window : Servo
+	class Window
 	{
 	private:
 		SDL_Window * & window;
 	public:
-		Window(Foundation & f); 
+		Window(SDL_Window* & window); 
 
 		virtual ~Window();
 	};

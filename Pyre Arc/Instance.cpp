@@ -18,7 +18,7 @@ void Engine::Instance::ValidateExtensions(const vector<char*>& extensions) {
 };
 	
 
-Engine::Instance::Instance(Foundation & f) : Servo(f), instance(f.instance)
+Engine::Instance::Instance(vk::Instance & instance) : instance(instance)
 {
 	const vector<char*> layers = {
 		#if _DEBUG
