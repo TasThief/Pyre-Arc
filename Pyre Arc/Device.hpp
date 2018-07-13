@@ -1,15 +1,15 @@
 #pragma once
-#include "Foundation.hpp" 
+#include "Requirements.hpp"
 #include "DeviceInspector.hpp"
 #include "QueueManager.hpp"
 
-namespace Engine {
+namespace Servo {
 
 	class Device
 	{
 	private:
 		///reference do the device object
-		vk::Device& device;
+		vk::Device device;
 
 		///
 		vk::PhysicalDevice PickPhysicalDevice(
@@ -18,7 +18,9 @@ namespace Engine {
 			const PhysicalDeviceRequestIndexes& requestedFeatures);
 
 	public:
-		Device(vk::Device & device, vk::Instance & instance, vk::SurfaceKHR & surface, QueueManager & queue);
+		operator vk::Device &();
+
+		Device(vk::Instance & instance, vk::SurfaceKHR & surface, QueueManager & queue);
 
 		~Device();
 	};

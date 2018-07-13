@@ -1,6 +1,6 @@
 #include "Surface.hpp"
 
-Engine::Surface::Surface(vk::SurfaceKHR & surface, vk::Instance & instance, SDL_Window* & window) : surface(surface), instance(instance)
+Servo::Surface::Surface(vk::Instance & instance, SDL_Window* & window) : surface(surface), instance(instance)
 {
 	try {
 		SDL_SysWMinfo windowInfo;
@@ -26,7 +26,12 @@ Engine::Surface::Surface(vk::SurfaceKHR & surface, vk::Instance & instance, SDL_
 		COUT(m)
 	}
 };
-Engine::Surface::~Surface()
+
+Servo::Surface::operator vk::SurfaceKHR &() {
+	return surface;
+}
+
+Servo::Surface::~Surface()
 {
 	instance.destroySurfaceKHR(surface);
 	COUT("[UNDONE] Surface")

@@ -1,7 +1,7 @@
 #include "Instance.hpp"
 
 //Check if all required extensions are present for this aplication, if not throw an error
-void Engine::Instance::ValidateExtensions(const vector<char*>& extensions) {
+void Servo::Instance::ValidateExtensions(const vector<char*>& extensions) {
 	vector<string> missingExtensions = {};
 	vector<vk::ExtensionProperties> iExtensions = vk::enumerateInstanceExtensionProperties();
 	for (const auto& extensionName : extensions)
@@ -17,8 +17,11 @@ void Engine::Instance::ValidateExtensions(const vector<char*>& extensions) {
 	}
 };
 	
+Servo::Instance::operator vk::Instance&() {
+	return instance;
+};
 
-Engine::Instance::Instance(vk::Instance & instance) : instance(instance)
+Servo::Instance::Instance() //: instance(instance)
 {
 	const vector<char*> layers = {
 		#if _DEBUG
@@ -61,7 +64,7 @@ Engine::Instance::Instance(vk::Instance & instance) : instance(instance)
 };
 
 
-Engine::Instance::~Instance()
+Servo::Instance::~Instance()
 {
 	//destroy the vkInstance
 	instance.destroy();

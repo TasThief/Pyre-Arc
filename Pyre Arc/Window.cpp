@@ -1,7 +1,6 @@
 #include "Window.hpp"
 
-Engine::Window::Window(SDL_Window* & window) : window(window)
-{
+Servo::Window::Window() {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		COUT("[ERROR] Could not initialize SDL.")
 	}
@@ -13,8 +12,12 @@ Engine::Window::Window(SDL_Window* & window) : window(window)
 		COUT("[DONE] Window")
 	}
 };
-Engine::Window::~Window()
-{
+
+Servo::Window::operator SDL_Window* &() {
+	return window;
+};
+
+Servo::Window::~Window() {
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 	COUT("[UNDONE] Window")

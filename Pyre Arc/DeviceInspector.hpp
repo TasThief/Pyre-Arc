@@ -1,6 +1,6 @@
 #include "Requirements.hpp"
 
-namespace Engine {
+namespace Servo {
 
 #define PHYSICAL_DEVICE_FEATURES_SIZE sizeof(vk::PhysicalDeviceFeatures) / sizeof(vk::Bool32)
 	//Union, physicaldevicefeatures with a bool32 list of the same size (this enables me to use the indexer of the list on the physical device features struct

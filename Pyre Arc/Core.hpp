@@ -10,19 +10,14 @@ namespace Engine {
 	{
 	public:
 		//Resources each servo will get a reference to those so they can work with
-		QueueManager queue;
-
-		vk::Instance vkInstance;
-		vk::SurfaceKHR vkSurface;
-		SDL_Window* sdlWindow;
-		vk::Device vkDevice;
+		Servo::QueueManager queue;
 
 		///Servo declarations
-		Engine::Instance instance = Instance(vkInstance);
-		Engine::Window window = Window(sdlWindow);
-		Engine::Surface surface = Surface(vkSurface, vkInstance, sdlWindow);
-		Engine::Device device = Device(vkDevice, vkInstance, vkSurface, queue);
-
+		Servo::Instance instance = Servo::Instance();
+		Servo::Window   window   = Servo::Window();
+		Servo::Surface  surface  = Servo::Surface(instance, window);
+		Servo::Device   device   = Servo::Device(instance, surface, queue);
+		 
 		void Run();
 	};
 }

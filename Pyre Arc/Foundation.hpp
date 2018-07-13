@@ -8,7 +8,7 @@ namespace Engine {
 	{
 	public:
 
-		QueueManager queue;
+		Servo::QueueManager queue;
 
 		vk::Instance instance;
 		vk::SurfaceKHR surface;

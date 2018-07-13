@@ -1,6 +1,6 @@
 #include "Device.hpp"
 
-vk::PhysicalDevice Engine::Device::PickPhysicalDevice(const vk::Instance& instance, const vk::SurfaceKHR& surface, const PhysicalDeviceRequestIndexes& requestedFeatures) {
+vk::PhysicalDevice Servo::Device::PickPhysicalDevice(const vk::Instance& instance, const vk::SurfaceKHR& surface, const PhysicalDeviceRequestIndexes& requestedFeatures) {
 	// Use an ordered map to automatically sort candidates by increasing score
 	std::multimap<int, vk::PhysicalDevice> candidates;
 
@@ -15,8 +15,11 @@ vk::PhysicalDevice Engine::Device::PickPhysicalDevice(const vk::Instance& instan
 		throw std::runtime_error("[ERROR] Failed to find a suitable GPU!");
 };
 
+Servo::Device::operator vk::Device &() {
+	return device;
+};
 
-Engine::Device::Device(vk::Device & device, vk::Instance & instance, vk::SurfaceKHR & surface, QueueManager & queue) : device(device) {
+Servo::Device::Device(vk::Instance & instance, vk::SurfaceKHR & surface, QueueManager & queue) {
 	PhysicalDeviceRequestIndexes requestedFeatureIndexes = vk::PhysicalDeviceFeatures()
 		.setGeometryShader(VK_TRUE)
 		.setDepthClamp(VK_TRUE);
@@ -40,7 +43,7 @@ Engine::Device::Device(vk::Device & device, vk::Instance & instance, vk::Surface
 	COUT("[DONE] Device")
 };
 
-Engine::Device::~Device() {
+Servo::Device::~Device() {
 	device.destroy();
 	COUT("[UNDONE] Device")
 };

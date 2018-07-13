@@ -1,15 +1,17 @@
 #pragma once
-#include "Foundation.hpp" 
+#include "Requirements.hpp"
 
-namespace Engine {
+namespace Servo {
 	class Surface
 	{
 	private:
-		vk::SurfaceKHR& surface;
+		vk::SurfaceKHR surface;
 
 		vk::Instance& instance;
 	public:
-		Surface(vk::SurfaceKHR & surface, vk::Instance & instance, SDL_Window* & window); 
+		operator vk::SurfaceKHR &();
+
+		Surface(vk::Instance & instance, SDL_Window* & window); 
 
 		virtual ~Surface();
 	};

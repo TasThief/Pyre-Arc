@@ -1,16 +1,16 @@
 #include "DeviceInspector.hpp"
 
-Engine::PhysicalDeviceFeaturesUnion::PhysicalDeviceFeaturesUnion(vk::PhysicalDeviceFeatures basefeatures) {
+Servo::PhysicalDeviceFeaturesUnion::PhysicalDeviceFeaturesUnion(vk::PhysicalDeviceFeatures basefeatures) {
 	data = basefeatures;
 };
 
-Engine::PhysicalDeviceFeaturesUnion::PhysicalDeviceFeaturesUnion() { };
+Servo::PhysicalDeviceFeaturesUnion::PhysicalDeviceFeaturesUnion() { };
 
 
 
 
 
-Engine::PhysicalDeviceRequestIndexes::PhysicalDeviceRequestIndexes(vk::PhysicalDeviceFeatures& base) {
+Servo::PhysicalDeviceRequestIndexes::PhysicalDeviceRequestIndexes(vk::PhysicalDeviceFeatures& base) {
 	//gets a pointer to the start of the struct
 	vk::Bool32* pointer = (vk::Bool32*)&base;
 
@@ -22,7 +22,7 @@ Engine::PhysicalDeviceRequestIndexes::PhysicalDeviceRequestIndexes(vk::PhysicalD
 			list.push_back(i);
 };
 
-bool Engine::DeviceInspector::CheckFeatureSupport() {
+bool Servo::DeviceInspector::CheckFeatureSupport() {
 	int32_t count = PHYSICAL_DEVICE_FEATURES_SIZE;
 	bool result = true;
 	for (size_t i = 0; i < requests.list.size() && result; i++)
@@ -32,7 +32,7 @@ bool Engine::DeviceInspector::CheckFeatureSupport() {
 
 
 //check if this device is able to process presentation commands
-VkBool32 Engine::DeviceInspector::CheckSurfaceSupport() {
+VkBool32 Servo::DeviceInspector::CheckSurfaceSupport() {
 	//result variable
 	VkBool32 hasSurfaceSupport = VK_FALSE;
 
@@ -49,7 +49,7 @@ VkBool32 Engine::DeviceInspector::CheckSurfaceSupport() {
 };
 
 //check if this device can be used
-bool Engine::DeviceInspector::CheckSuitability() {
+bool Servo::DeviceInspector::CheckSuitability() {
 	return
 		//this device supports presentation
 		CheckSurfaceSupport() &&
@@ -62,12 +62,12 @@ bool Engine::DeviceInspector::CheckSuitability() {
 };
 
 //initialize the device inspector
-Engine::DeviceInspector::DeviceInspector(const vk::PhysicalDevice& deviceRef, const vk::SurfaceKHR& surfaceRef, const PhysicalDeviceRequestIndexes& requestsRef) : device(deviceRef), surface(surfaceRef), requests(requestsRef) 
+Servo::DeviceInspector::DeviceInspector(const vk::PhysicalDevice& deviceRef, const vk::SurfaceKHR& surfaceRef, const PhysicalDeviceRequestIndexes& requestsRef) : device(deviceRef), surface(surfaceRef), requests(requestsRef)
 {
 };
 
 //rate this device fitness (0 means this device cant be used at all)
-int Engine::DeviceInspector::RateFitness() {
+int Servo::DeviceInspector::RateFitness() {
 	int score = 0;
 	if (CheckSuitability()) {
 		if (properties.deviceType == vk::PhysicalDeviceType::eDiscreteGpu)
