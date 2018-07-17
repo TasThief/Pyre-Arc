@@ -39,11 +39,22 @@ namespace Servo {
 
 		//Builds a vector of family properties ext for each type of family
 		inline static vector<QueueFamilyPropertiesExt> GetExtList(const vector <vk::QueueFamilyProperties>& familyProperty) {
-			vector<QueueFamilyPropertiesExt> familyMap;/*
+			//vector with all queue family properties (ones for each family type)
+			vector<QueueFamilyPropertiesExt> familyMap;
+
+			///For each family property block extracted from vk's library
 			for (int32_t i = 0; i < familyProperty.size(); i++)
-				familyMap.push_back(QueueFamilyPropertiesExt{ familyProperty[i].queueCount, i, familyProperty[i].queueFlags });*/
+
+				///add a new queue family property ext
+				familyMap.push_back(QueueFamilyPropertiesExt( familyProperty[i].queueCount, i, familyProperty[i].queueFlags ));
+
+			///return map
 			return familyMap;
 		}
+
+		inline QueueFamilyPropertiesExt(const uint32_t queueCount, const int32_t i, const vk::QueueFlags familyFlags):
+			count(queueCount), index(i), flags(familyFlags) {};
+
 	};
 	struct QueueManager {
 	public:
