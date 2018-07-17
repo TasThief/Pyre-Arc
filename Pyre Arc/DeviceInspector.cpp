@@ -6,10 +6,6 @@ Servo::PhysicalDeviceFeaturesUnion::PhysicalDeviceFeaturesUnion(vk::PhysicalDevi
 
 Servo::PhysicalDeviceFeaturesUnion::PhysicalDeviceFeaturesUnion() { };
 
-
-
-
-
 Servo::PhysicalDeviceRequestIndexes::PhysicalDeviceRequestIndexes(vk::PhysicalDeviceFeatures& base) {
 	//gets a pointer to the start of the struct
 	vk::Bool32* pointer = (vk::Bool32*)&base;
@@ -62,8 +58,7 @@ bool Servo::DeviceInspector::CheckSuitability() {
 };
 
 //initialize the device inspector
-Servo::DeviceInspector::DeviceInspector(const vk::PhysicalDevice& deviceRef, const vk::SurfaceKHR& surfaceRef, const PhysicalDeviceRequestIndexes& requestsRef) : device(deviceRef), surface(surfaceRef), requests(requestsRef)
-{
+Servo::DeviceInspector::DeviceInspector(const vk::PhysicalDevice& deviceRef, const vk::SurfaceKHR& surfaceRef, const PhysicalDeviceRequestIndexes& requestsRef) : device(deviceRef), surface(surfaceRef), requests(requestsRef) {
 };
 
 //rate this device fitness (0 means this device cant be used at all)

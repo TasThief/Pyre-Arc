@@ -2,14 +2,42 @@
 #include "Requirements.hpp"
 
 namespace Servo {
+	//Each queue family type has a queuefamilyproperty ext
 	struct QueueFamilyPropertiesExt {
+		//How many queues this device has
 		const uint32_t count;
+
+		//The index of this queue
 		const int32_t index;
+
+		//The queue flag
 		const vk::QueueFlags flags;
-		int32_t used = 0;
-		inline int32_t PickQueueId() {
-			return used++;
+
+		//How many queues where used
+		uint32_t used = 0;
+
+		//Draws a queue from this family. queueId is a integer with the queue's index, returns if managed to draw a open queue
+		inline bool PickQueueId(int32_t& queueId) {
+			//If the family has a open queue
+			bool result = false;
+
+			///If it has open queues
+			if (used < count) {
+				///return its 
+				queueId = used++;
+
+				///set the draw as sucessful
+				result = true;
+			}
+			return result;
 		}
+
+		//Reset the used queues back to 0, so the draw system is able to draw repeated queues
+		inline void ResetQueueDrawId() {
+			used = 0;
+		}
+
+		//Builds a vector of family properties ext for each type of family
 		inline static vector<QueueFamilyPropertiesExt> GetExtList(const vector <vk::QueueFamilyProperties>& familyProperty) {
 			vector<QueueFamilyPropertiesExt> familyMap;/*
 			for (int32_t i = 0; i < familyProperty.size(); i++)

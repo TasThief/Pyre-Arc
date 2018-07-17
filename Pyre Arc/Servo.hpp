@@ -8,11 +8,8 @@ namespace Servo {
 	class Servo {
 	public:
 		T resource;
-	public:
 		inline Servo() {};
-		inline operator T&() {
-			return resource;
-		}
+		inline operator T&() {	return resource; }
 		inline virtual ~Servo() {};
 	};
 
