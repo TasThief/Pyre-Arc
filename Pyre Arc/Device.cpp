@@ -30,6 +30,8 @@ Servo::Device::Device(vk::Instance & instance, vk::SurfaceKHR & surface, QueueMa
 	//List with all info related to the queue infos
 	vector<vk::DeviceQueueCreateInfo> queueInfoList;
 	
+	//physicalDevice.createDevice()
+	
 	//fills queue infos
 	queue.GetQueueCreationInfoList(physicalDevice, resource, queueInfoList);
 

@@ -6,7 +6,7 @@ namespace Servo {
 	//Union, physicaldevicefeatures with a bool32 list of the same size (this enables me to use the indexer of the list on the physical device features struct
 	union PhysicalDeviceFeaturesUnion {
 		//array interface for the data stored in this container
-		vk::Bool32 index[PHYSICAL_DEVICE_FEATURES_SIZE];
+		vk::Bool32 iterator[PHYSICAL_DEVICE_FEATURES_SIZE];
 
 		//physical device features stored in this container
 		vk::PhysicalDeviceFeatures data;

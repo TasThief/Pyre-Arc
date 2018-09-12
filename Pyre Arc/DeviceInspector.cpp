@@ -19,10 +19,10 @@ Servo::PhysicalDeviceRequestIndexes::PhysicalDeviceRequestIndexes(vk::PhysicalDe
 };
 
 bool Servo::DeviceInspector::CheckFeatureSupport() {
-	int32_t count = PHYSICAL_DEVICE_FEATURES_SIZE;
+	int32_t size = PHYSICAL_DEVICE_FEATURES_SIZE;
 	bool result = true;
 	for (size_t i = 0; i < requests.list.size() && result; i++)
-		result = features.index[requests.list[i]] == VK_TRUE;
+		result = features.iterator[requests.list[i]] == VK_TRUE;
 	return result;
 }
 
